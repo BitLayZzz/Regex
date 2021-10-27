@@ -1,0 +1,34 @@
+Exercises from the basic matching section.
+
+Q1: Write a regex that matches and uppercase K. Test it with these strings:
+Kx BlacK kelly
+
+A1: /K/
+
+
+Q2: Write a regex that matches an uppercase or lowercase H. Test it with these strings:
+Henry perch golf
+
+A2: /H/i  OR /(h|H)/
+
+Q3: Write a regex that matches the string dragon. Test it with these strings:
+snap dragon
+beared dragon
+dragoon
+
+A3: /dragon/
+
+
+Q4: Write a regex that matches any of the following fruits: 
+    banana, orange, apple, strawberry
+    The fruits may appear in other words. Test it with these strings:
+
+A4: /(banana|orange|apple|strawberry)/
+
+
+Q5: Write a regex that matches a comma or space. Test your regex with these strings:
+This line has spaces
+This,line,has,commas,
+No-spaces-or-commas
+
+A5: /([ ]|,) OR /( |,)/

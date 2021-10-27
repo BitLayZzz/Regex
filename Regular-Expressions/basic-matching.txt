@@ -1,0 +1,82 @@
+These are rough notes from the Basic Matching in the Regular Expressions chapter.
+
+This chapter will serve as quick introduction to regex patterns that match substrings
+it also touches on some more intricate patterns, namely those that can match one of
+two or more subpatterns.
+
+Examples ran in Rubular
+
+
+Alphanumerics:
+   The most basic regex of all is one that matches alphanumeric characters.
+   It's a simple as placing a number or letter in between two forward slashes.
+    ex: /s/ -> matches 's' anywhere in a string. not 'S'
+  In programming languages such as Ruby and js, this can be used with the match
+  String method
+    rb-ex: str = 'cast'; p "matched 's'" if str.match(/s/)
+    js-ex:
+      let str = 'cast';
+      if (str.match(/s/)) {
+        console.log("matched 's'");
+      }
+
+
+Special Characters:
+  Regex also matches non-alphanumeric characters. However, some of those have
+  special meaning in a pattern and require specialized treatment.
+
+    $ ^ * + ? . ( ) [ ] { } | \ / all have special treatent
+    These are the meta-characters. meta-characters must ALWAYS be escaped with \
+    ex: /\?/ -> matches '?' anywhere in a string.
+  other than the meta-characters. everthing else is treated like alphanumerics
+    this includes spaces (' '), this can be represented as /[ ]/
+
+  It's good practice to get a feel for which characters are meta-characters.
+  This will help make your code more legible. When in doubt, test it out!
+
+
+Concatenation:
+  You can combine (concat) two or more paterns into a new pattern that matches
+  each of the originals in sequence.
+     ex: /cat/ is a concatenation of /c/, /a/, and /t/
+  There are no limits to concatenation, regex patterns are the building blocks
+  not the characters of individual strings. 
+  Complex regex can by created with concatenation.
+  With that said, it's easy to get lost in the complexity
+    Use regex not because you can; use them because your code demands them.
+    Often, refactoring will remove the need for this complexity.
+
+
+Alternation:
+  A simple way to construct a regex that matches one of severla sub-patterns.
+  In its most basic form, you write 2+ patterns separated by pipes (|).
+    think of it like an array of options to choose from
+    ex: /(cat|dog|rabbit)/ -> matches any strings that contains one of the 3 regex
+    parentheses and pipes are meta-characters, we use there "meta" meanings in this case
+      /\(cat\|dog\|rabbit\)/ -> matches the literal string "(cat|dog|rabbit)
+  Just like concatenation, there are no built-in restrictions.
+
+
+Control Character Escapes:
+  These are characters computing languages that don't have a visual representation
+    ex: \n -> goes to next line (there are others like \r, \t, etc.)
+  All regex engines support these characters
+    rb-ex: puts "has tab" if text.match(/\t/)
+    js-ex:
+      if (text.match(/\t/)) {
+        console.log("has tab");
+      }
+    Both examples print "has tab" if text contains a tab character.
+
+
+Ignoring Case:
+  Self explanatory. ignore the case by appending I to the closing forward slash
+    ex: /ignore/i == /IGNORE/i
+  These are called regex options!
+    There are many more options, but alot are language specific.
+
+
+SUMMARY:
+  The discussion so far is straight-forward. You've learned the basic regex syntax,
+  seen an example of using regex, and played around with a few basic regex. You've also
+  learned about one of the fundamental concepts behind regex: concatenation of patterns.
