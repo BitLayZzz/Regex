@@ -1,0 +1,66 @@
+These are rough notes from the character classes section of Intro to Regex
+
+This section will discuss characters the different classes, or sets, of characters
+you can choose to match together. It will stick to the simple character class
+info for now. Understanding how to construct elementary classes is crucial.
+
+Set of Characters:
+  Character class patterns use a list of characters between square brackets. 
+
+  Such a pattern matches a single occurence of any of the characters between
+    the brackets.
+    ex: /[abc]/, /[12345]/, 
+    Don't EVER automatically remove brackets if you encounter a pair in code you're
+    working on
+
+  These are useful, for example, to account for capitalization
+    ex: /[Hh]oover/ -> matches Hoover or hoover, not HOOVER
+  Or to validate a y/n prompt response
+    ex: /[nyNY]/
+
+  It's good practice to group characters by type: digits, uppercase letters,
+    lowercase letters, whitespace, and non-alphanumeric characters.
+      Typically, non-alphanumerics come first or last in the character class.
+
+   Important to know that characer classes can be concatenated.
+    ex: /[abc][12]/ -> matches any character from 1st set to any character from 2nd set
+
+  Meta-Characters are SLIGHTLY DIFFERENT inside character classes
+    List of meta-characters: ^ ! \ - [ ]
+    + and * are no longer included, with that said characters can ALWAYS be escaped 
+    ^ is only meta if it is the FIRST character.
+
+
+Range of Characters: 
+  You can abbreviate charcter classes if they occur in natural sequences.
+    ex: /[a-z]/ -> match any lowercase letters of the alphabet 
+    ex2: /[j-p]/ -> match any lowercase letter from j to p
+    ex3: /[0-9]/ -> match any decimal digit.
+  Here's a hand way to match hexadecimal digits in ruby:
+    ex_rb: def hex_digit?(char) char.match(/0-9A-Fa-f]/) end
+
+  It is NOT recommended to construct ranges of non-alphanumeric characters.
+    ex: /[!-%]/ -> messy, don't do this
+  It is also NOT recommended to combine lowercase and upercase alphabetic characters.
+    ex: [/A-z]/ -> messy, don't do this
+
+
+Negated Classes:
+  Ranges can also be negated (ignored), using regex
+  negate a range by putting the caret ( ^ ) before the regex pattern
+  ex: /[^y]/ -> ignores all y 's
+  ex2: /[^aeiou]/ -> ignore vowels
+  negating is also case sensitive se BE WARY OF THAT 
+
+    ex_rb:
+      text = 'xyx'
+      puts 'matched if text.match(/[^x]/)
+    exJS:
+      let text = 'xyx';
+      if (text.match(/[^x]/)) { console.log('matched'); }
+
+
+SUMMARY:
+Character classes are groups/sets of defined characters to search for.
+These sets can be shortened into ranges if they include a naturally occuring sequence
+Character classes and Ranges can ALSO be negated
