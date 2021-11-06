@@ -1,0 +1,82 @@
+Exercises from the Character Classes section
+
+Q1: Write a regex that matches uppercase K or lowercase K or a lowercase s.
+  Test the following:
+  Kitchen Kaboodle
+  Reds and blues
+  kitchen Servers
+6 matches
+
+A1: /[Kks]/
+
+
+Q2: Write a regex that matches any of the strings cat, cot, cut, bat, bot, or but,
+  regardless of case. Test with the following:
+  My cats, Butterscotch and Pudding, like to
+  sleep on my cot with me, but they cut my sleep
+  short with acrobatics when breakfast time rolls
+  around. I need a robotic cat feeder.
+9 matches
+
+A2:
+  /[bc][aou]t/i
+
+
+Q3: Base 20 digits include the decimal digits 0 and 9, and the letters A through J
+  in upper or lowercase. Write a regex that matches base 20 digits.
+  Test it with these strings:
+  0xDEADBEEF
+  1234.5678
+  Jamaica
+  plow ahead
+There should be 28 matches
+
+A3: /[0-9A-Ja-j]/
+
+Q4: Write a regex that matches any letter except x or X.
+  Test it with these strings:
+  0x1234
+  Too many XXXXXXXXXXxxxxxxXXXXXXXXXXXX to count.
+  The quick brown fox jumps over the lazy dog
+  THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG
+There should be 82 matches.
+
+A4: /[a-wyz]/i
+
+
+Q5: Why is /[^x]/i not a valid answer to the previous exercise?
+
+A5: The previous regex would include all non-alphabetic characters as well.
+
+
+Q6: Write a regex that matches any character that is not a letter.
+Test it with these strings:
+
+A6: /[^a-z]/i
+
+
+Q7: Are /(ABC|abc)/ and /[Aa][Bb][Cc]/ equivalent regex?
+
+A7: No the output of the 1st regex will be either all caps or all lowercase
+   where as the 2nd regex will have more variation in the case.
+   8 different possibilities I believe
+
+
+Q8: Are /abc/i and /[Aa][Bb][Cc]/ equivalent regex?
+
+A8: No, the output of the first regex will, again be either all caps or no lowercase.
+   The other will be more dynamic.
+
+
+Q9: Challenge: write a regex that matches a string that look like a simple negated
+  character class range, e.g [^a-z].
+  (Your answer should match precisely six characters.)
+  Test with these strings:
+  The regex /[^a-z]/i matches any character that is
+  not a letter. Similarly, /[^0-9]/ matches any
+  non-digit while /[^A-Z]/ matches any character
+  that is not an uppercase letter. Beware: /[^+-<]/
+  is at best obscure, and may even be wrong.
+There should be three matches.
+
+A9: /\[\^[0-9a-z]-[0-9a-z]\]/i
