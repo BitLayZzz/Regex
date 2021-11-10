@@ -1,0 +1,53 @@
+These are rough notes from the Character Class Shortcuts chapter from the 
+introduction to regex ebook.
+
+This chapter will discuss some of the regex engines' built-in shortcuts.
+
+Any Character
+  The most commonly needed character class is the class that represents any character;
+  a period is used as a shortcut to represent any regex character
+    ex: /./ -> matches any character
+  By default, /./ doesn't match new line characters. Use the /m option when you
+  you do that 
+
+Whitespace
+  Two additional character class shortcuts that are frequently needed are
+  \s for whitespace characters and \S for non-whitespace characters.
+  whitespace characters include space, tab, vertical tab, carriage return, line feed,
+  and form feed
+    \s is equivalent to all of these, \S is the opposite
+  rb-ex:
+    puts 'matched 1' if 'Four score'.match(/\s/)
+    puts 'matched 2' if "Four\tscore".match(/\s/)
+    puts 'matched 3' if "Four-score\n".match(/\s/)
+    puts 'matched 4' if "Four-score".match(/\s/)
+  js-ex:
+    if ('Four score'.match(/\s/)) {
+      console.log('matched 1');
+    }
+    if ("Four\tscore".match(/\s/)) {
+      console.log('matched 2');
+    }
+    if ("Four-score\n".match(/\s/)) {
+      console.log('matched 3');
+    }
+    if ("Four-score".match(/\s/)) {
+      console.log('matched 4');
+    }
+  Both white space shortcuts can be used inside or outside of brackets.
+
+Digits and Hex Digits
+  The shortcuts for these classes work similarly
+  \d is any decimal digit while \D is any non-digit
+  \h is any hexadecimal digit while \H is any non-hexadecimal digit
+    \h and \H pertains to Ruby
+
+
+Word Characters
+  These include all alphanumeric characters as well as underscores
+  \w matches "word charactes", while \W matches "non-word characters"
+
+
+Summary
+Liberal use of these shortcuts help make your regex easy to type and improve
+readability.

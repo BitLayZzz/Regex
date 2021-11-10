@@ -1,0 +1,45 @@
+Exercises from the character shortcuts section
+
+Q1: Write a regex that matches any sequence of three characters delimited by 
+  whitespace characters. Test it with the following:
+  reds and blues
+  the lazy cat sleeps
+three matches
+
+A1: /\s...\s/
+
+
+Q2: Test the regex /\s...\s/ from the previous exercise against the following
+  text:
+    Doc in a big red box.
+    Hup! 2 3 4
+  Why did we get the results we did?
+
+A2: Doc wasn't picked up because there is no whitespace before the pattern,
+  red because?
+  box wasn't picked up becasue a . is followed.
+  Hup! wasn't picked up becasue it is a 4 character regex.
+  2 3 is red as a 3 character regex that includes 2, ' ', and 3.
+  red is not picked up because the regex big takes precedence over the whitespaces
+  before and after the regex
+
+
+Q3: Write a regex that matches any four digit hexadecimal number that is both
+  preceded and followed by whitespace. Note that 0x1234 is not a hexadecimal number
+  in this exercise: there is no space before the number 1234
+
+  Hello 4567 bye CDEF - cdef
+  0x1234 0x5678 0xABCD
+  1F8A done
+four matches
+
+A3: /\s\h\h\h\h\s/
+
+
+Q4: Write a regex that matchess any sequence of three letters.
+  Test it with the following:
+  The red d0g chases the b1ack cat.
+  a_b c_d
+seven matches
+
+A4: /[a-z][a-z][a-z]/i

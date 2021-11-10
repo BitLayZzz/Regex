@@ -1,0 +1,43 @@
+These are rough notes on the Anchors section from Intro to Regular Expressions
+
+This section will discuss ways in which we can limit how a regex matches a particular
+string by telling the regex engine where matches can begin and where they can
+end.
+
+Start/End of Line
+  ^ and $ meta-characters are anchors that fix a regex match to the beginning ( ^ )
+  or ending ( $ ) of a line of text.
+    There's a subtle difference in Ruby, stay tuned.
+  ex: /^cat/ -> matches strings with cat at the beginning of a line
+  ex: /cat$/ -> matches strings with cat at the end of a line
+  ex: /^cat$/ -> both
+
+Lines vs Strings
+  Ruby, like mentioned above, has subtle differences with this rule
+    When the string you are attempting to match contains one or more newline characters
+    that aren't the last character in the string, ruby treats each character after
+    \n as the beginning character of a line
+  ex: "red fish\nblue fish" -> matches red and blue are both beginning patterns
+
+Start/End of String
+  Most common are the \A, \Z, and \z anchors
+    \A anchor ensures that a regex matches at the beginning of the string
+    \z always matches at the end of a string
+    \Z matches up to, but not including a newline at the end.
+      use \z until you need \Z
+
+Word Boundaries
+  \b matches to "word-boundaries" and \B matches to "non-word-boundaries"
+  A word boundary are:
+    between any pair of characters, one of which is a word char and one which isn't
+    at the beginning of a string if the first charcter is a word character.
+    at the end of a string if the last character is a word character.
+  ex: Eat some food -> word boundaries before the E, s, and f, and after t, e, and d.
+  note: \b and \B do not work the same inside character classes []; it is a backspace.
+
+
+Summary
+Anchors provide a great deal more flexibility. These simple constructs provide
+a degree of control over your regex. You can now tell the regex engine where matches
+can occur. A great next step on this topic would be to explore look-ahead and
+look-behind assertions.

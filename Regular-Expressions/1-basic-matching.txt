@@ -1,4 +1,4 @@
-These are rough notes from the Basic Matching in the Regular Expressions chapter.
+These are rough notes from the Basic Matching section in the Regular Expressions chapter.
 
 This chapter will serve as quick introduction to regex patterns that match substrings
 it also touches on some more intricate patterns, namely those that can match one of
