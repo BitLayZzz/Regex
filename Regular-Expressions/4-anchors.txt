@@ -30,7 +30,7 @@ Word Boundaries
   \b matches to "word-boundaries" and \B matches to "non-word-boundaries"
   A word boundary are:
     between any pair of characters, one of which is a word char and one which isn't
-    at the beginning of a string if the first charcter is a word character.
+    at the beginning of a string if the first character is a word character.
     at the end of a string if the last character is a word character.
   ex: Eat some food -> word boundaries before the E, s, and f, and after t, e, and d.
   note: \b and \B do not work the same inside character classes []; it is a backspace.

@@ -1,0 +1,57 @@
+These are rough notes on the Quantifiers section from Intro to Regular Expressions
+
+This section will now discuss "the heart of regex"
+
+Zero or More
+  How can you REALLY LONG strings of text? How can you make the following
+  less ugly:
+    /\b(\d\d\d\d\d\d|\d\d\d\d\d|\d\d\d\d|\d\d\d)\b/
+  Regex engines have solution, quantifiers!
+  The most common is the *
+    matches zero or more occurences of the pattern to the left
+    ex: /\b\d\d\d\d*\b/ -> matches patterns of 3 or more digits
+    ex: /co*t/ -> matches patterns of ct with any number of o's in between
+  Technically you can match every string this way
+    /x*/ will match every string
+  The quantifier ALWAYS applies to one pattern; the pattern it finds to
+  the left of it.
+  Patterns can be grouped with parenthese for more clarity
+    ex: /1(234)*5/ -> matches patterns of 15 with any number of 234's in between
+
+One or More
+  Very similar to the Zero or More *. We use + to match one or more occurences
+  Not all engines offer +, but both Ruby and JS do.
+    ex: /\b\d\d\d\d+\b/ -> matches patterns of 4 or more digits
+
+Zero or One
+  Sometimes you'll need to specify a pattern that either occurs once or not at all
+  The ? quantifier will do this. This can be useful when testing whether a string
+  contains a specific word but you don't wnat to match against other variations
+    ex: /coo?t/ -> tests whether a string is cot or coot
+    ex: /\b\d\d\d\d-?\d\d-?\d\d\b -> checks for date format with or without -
+
+Ranges 
+  The *, +, and ? quantifiers match repeated sequences.
+  However, you may at time need to specify the repeat count more precisely
+    Testing a phone number to see if it contains exactly 10 digits.
+  The range quantifier {} solves this
+  examples:
+    p{m] matches precisely m occurences of p
+    p{m,} matches m or more occurences of p.
+    p{m,n} matches m or more occurences of p, up to n.
+  This can be useful when testing phone numbers like mentioned above
+    ex: /\b\d{10}\b/ -> matches precisely 10 occurences of any digit
+    ex: /\b\d{3,}\b/ -> Matches numbers that are at least 3 digits in length
+    ex: /\b[a-z]{5,8}\b/i -> matches words of 5 to 8 letters
+
+Greediness
+  The ones discussed are "greedy"
+    they always match the longest possible string they can.
+  In most cases, greediness is what you want. However, you sometimes don't
+  Sometimes, you need a "lazy match".
+  This can be done using ? after the main quantifier
+    ex: /a[abc]*?c/ -> matches abc and ac in xabcbcbacy
+
+Summary
+This concludes the overview of regular expressions.
+The next chapter will being to use regex in real programs.
