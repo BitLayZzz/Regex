@@ -68,3 +68,71 @@ Test with the following:
 three matches
 
 A7: /\b([a-z]*i){3,}[a-z]*\b/i
+
+
+Q8: Write a regex that matches the last word in each line of text. For this exercise,
+assume that words are any sequence of non-whitespace characters.
+Test with the following:
+  What's up, doc?
+  I tawt I taw a putty tat!
+  Thufferin' thuccotath!
+  Oh my darling, Clementine!
+  Camptown ladies sing this song, doo dah.
+five matches
+
+A8: /\b\S+$/
+
+
+Q9: Write a regex that matches lines of text that contain at least 3, but no more
+than 6, consecutive comma separated numbers. You may assume that every number on each
+line is both preceded by and followed by a comma.
+Test with the following
+  ,123,456,789,123,345,
+  ,123,456,,789,123,
+  ,23,56,7,
+  ,13,45,78,23,45,34,
+  ,13,45,78,23,45,34,56,
+three matches
+
+A9: /^,(\d+,){3,6}$/
+
+
+Q10: Write a regex that matches lines of text that contain at least 3, but no more
+than 6, consecutive comma separated numbers. In this exercise, you can assume that 
+the first number on each line is NOT preceded by a comma, and the last number is NOT
+followed by a comma.
+Test with the following:
+  123,456,789,123,345
+  123,456,,789,123
+  23,56,7
+  13,45,78,23,45,34
+  13,45,78,23,45,34,56
+three matches
+
+A10: /^(\d+,?){3,6}$/
+
+
+
+Q11: Write a regex that matches lines of text that contain either 3 comma separated
+numbers or 6 or more comma separated numbers. 
+Test with the following:
+  123,456,789,123,345
+  123,456,,789,123
+  23,56,7
+  13,45,78,23,45,34
+  13,45,78,23,45,34,56
+three matches
+
+A11: /^(((\d+,){5,})|(\d+,){2})\d+$/
+
+
+Q12: Write a regex that matches HTML h1 header tags
+  <h1>Main Heading</h1>
+  <h1>Another Main Heading</h1>
+  <h1>ABC</h1> <p>Paragraph</p> <h1>DEF</h1><p>Done</p>
+and the content between the opening and closing tags. If multiple header tags appear
+on one line, your regex should match the opening and closing tags and the text
+content of the headers, but nothing else. You may assume that there are no nested
+tags in the text between <h1> and </h1>
+
+A12: /<h1>.*?<\/h1>/ -> got it wrong, needed to use a "lazy quantitifier"
